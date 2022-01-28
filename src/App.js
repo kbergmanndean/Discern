@@ -37,14 +37,21 @@ function App() {
         setGOOGData(array[3])
         setGSPCData(array[4])
         setNFLXData(array[5])
-        console.log(array)
+        console.log(AAPLData)
       }))
   },[])
 
 
   return (
     <div className="App">
-      <Graph data={AAPLData}/>
+      <Graph 
+        AAPLData={AAPLData}
+        AMZNData={AMZNData}
+        FBData={FBData}
+        GOOGData={GOOGData}
+        GSPCData={GSPCData}
+        NFLXData={NFLXData}
+      />
     </div>
   );
 }
