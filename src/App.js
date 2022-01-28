@@ -2,31 +2,22 @@ import Graph from "./Components/Graph.js"
 import './App.css';
 import axios from "axios";
 import {useState} from "react"
-import $ from "jquery-csv";
-
+import Papa from "papaparse"
+// import header from "papaparse"
 
 function App() {
   const [AAPLData, setAAPLData] = useState([])
 
- 
-
-
   axios.get("/data/AAPL.csv")
     .then((response) => {
       let data=response.data
-      console.log(data.toString())
-      // let parsedData=$.csv.toObjects(data);
-      // console.log(data);
+      let parsedData=Papa.parse(data, {header:true})
+      console.log(parsedData.data);
+      setAAPLData(parsedData.data)
     })
     .catch((error) => {
       console.log(error)
   })
-
-
-
-
-
-
 
 
   return (
