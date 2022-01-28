@@ -3,7 +3,7 @@ import './App.css';
 import axios from "axios";
 import {useEffect, useState} from "react"
 import Papa from "papaparse"
-// import header from "papaparse"
+
 
 function App() {
   const [AAPLData, setAAPLData] = useState([])
@@ -14,50 +14,37 @@ function App() {
   const [NFLXData, setNFLXData] = useState([])
 
 
-
-  // let AAPL = axios.get("/data/AAPL.csv")
-  //   .then((response) => {
-  //     let data=response.data
-  //     let parsedData=Papa.parse(data, {header:true})
-  //     console.log(parsedData.data);
-  //     setAAPLData(parsedData.data)
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  // })
-
-  function processData(data){
-    let preData=data.data
+  function processData(response) {
+    let preData=response.data
     let parsedData=Papa.parse(preData, {header:true, delimiter:","})
-    console.log(parsedData.data)
     return parsedData.data
   }
 
-
- 
-  axios.all([
-    axios.get("/data/AAPL.csv"),
-    axios.get("/data/AMZN.csv"),
-    axios.get("/data/FB.csv"),
-    axios.get("/data/GOOG.csv"),
-    axios.get("/data/GSPC.csv"),
-    axios.get("/data/NFLX.csv")
-  ])
-    .then(axios.spread((...responses) => {
-      responses.map(r=>processData(r))
-      setAAPLData(responses[0])
-      setAMZNData(responses[1])
-      setFBData(responses[2])
-      setGOOGData(responses[3])
-      setGSPCData(responses[4])
-      setNFLXData(responses[5])
-    }))
-
+  useEffect(async() => {
+    const result = await axios.all([
+      axios.get("/data/AAPL.csv"),
+      axios.get("/data/AMZN.csv"),
+      axios.get("/data/FB.csv"),
+      axios.get("/data/GOOG.csv"),
+      axios.get("/data/GSPC.csv"),
+      axios.get("/data/NFLX.csv")
+    ])
+      .then(axios.spread((...result) => {
+        let array =result.map(r=>processData(r))
+        setAAPLData(array[0])
+        setAMZNData(array[1])
+        setFBData(array[2])
+        setGOOGData(array[3])
+        setGSPCData(array[4])
+        setNFLXData(array[5])
+        console.log(array)
+      }))
+  },[])
 
 
   return (
     <div className="App">
-      <Graph/>
+      <Graph data={AAPLData}/>
     </div>
   );
 }
