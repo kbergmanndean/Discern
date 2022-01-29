@@ -1,38 +1,27 @@
 .App {
   text-align: center;
+  font-family:"Manrope";
+  color:#1d58a5;
+  margin:0;
+  padding:0;
+}
+#head{
+  background-color:#0a1e37;
+  margin:0;
+  padding-top:10pt;
+  padding-bottom:5pt;
+}
+button {
+  border:none;
+  font-family:"Manrope";
+  margin:5pt;
+  margin-right:10pt;
+  padding:5pt;
+  background-color:#1d58a5;
+  color:white;
+  border-radius:2pt;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#compare {
+  padding:10pt;
 }
