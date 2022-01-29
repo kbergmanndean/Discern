@@ -1,15 +1,19 @@
 .App {
   text-align: center;
   font-family:"Manrope";
-  color:#1d58a5;
+  color:#fed600;
   margin:0;
   padding:0;
 }
-#head{
+#head {
   background-color:#0a1e37;
   margin:0;
   padding-top:10pt;
   padding-bottom:5pt;
+}
+#graph-container {
+  display:flex;
+  justify-content:center;
 }
 button {
   border:none;
@@ -17,11 +21,43 @@ button {
   margin:5pt;
   margin-right:10pt;
   padding:5pt;
+  /* background-color:#0a1e37; */
   background-color:#1d58a5;
   color:white;
-  border-radius:2pt;
+}
+button:hover {
+  color:#fed600;
+}
+#compare {
+  /* padding:10pt; */
+  /* margin-top:30pt; */
+  background-color:#fed600;
+  color:#0a1e37;
+  border-radius:3pt;
+}
+#compare:hover {
+  background-color:#1d58a5;
+  color:white;
+}
+#graph {
+  /* width:75%; */
+  /* float:left; */
+  width:80%;
+ 
+}
+#sidebar {
+  /* float:left; */
+  /* text-align:center; */
+  background-color:#1d58a5;
+  /* width:25%; */
+}
+#filters{
+  background-color:#1d58a5
+}
+.show-buttons{
+  /* text-align:left; */
+}
+.hide-buttons{
+
 }
 
-#compare {
-  padding:10pt;
-}

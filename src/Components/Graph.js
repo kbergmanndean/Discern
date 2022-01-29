@@ -66,7 +66,7 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
         responsive:true, 
         plugins:{
             legend:{
-                position:"top",
+                position:"right",
             },
             title:{
                 display:true
@@ -80,19 +80,25 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
     return(
         <div>
             <div id="head">
-            <h1>Stock Prices and S&P 500 Index Value</h1>
-            <button id="compare" onClick={()=>setShowComparison(!showComparison)}>Comparison</button>
-            {showComparison?
-            <div>
-                <button onClick={()=>filterLines(AAPLLine)}>AAPL</button>
-                <button onClick={()=>filterLines(AMZNLine)}>AMZN</button>
-                <button onClick={()=>filterLines(FBLine)}>FB</button>
-                <button onClick={()=>filterLines(GOOGLine)}>GOOG</button>
-                <button onClick={()=>filterLines(NFLXLine)}>NFLX</button>
+                <h1>Stock Prices and S&P 500 Index Value</h1>
             </div>
-            :null}
+            <div id="sidebar" className={`${showComparison?"show-buttons":"hide-buttons"}`}>
+                <button id="compare" onClick={()=>setShowComparison(!showComparison)}>Comparison</button>
+                {showComparison ?
+                <div id="filters">
+                    <button onClick={()=>filterLines(AAPLLine)}>AAPL</button>
+                    <button onClick={()=>filterLines(AMZNLine)}>AMZN</button>
+                    <button onClick={()=>filterLines(FBLine)}>FB</button>
+                    <button onClick={()=>filterLines(GOOGLine)}>GOOG</button>
+                    <button onClick={()=>filterLines(NFLXLine)}>NFLX</button>
+                </div>
+                : null}
             </div>
-            <Line data={data} options={options}/>
+            <div id="graph-container">
+                <div id="graph">
+                    <Line data={data} options={options}/>
+                </div>
+            </div>
         </div>
     )
 }
