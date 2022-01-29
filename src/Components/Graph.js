@@ -1,7 +1,10 @@
 import { DatasetController } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useState } from "react"
 
 function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
+    const [showComparison, setShowComparison] = useState(false)
+    const [lineShown, setLineShown] = useState("")
 
     let dates=AAPLData.map(obj=>{return(obj["Date"])})
 
@@ -34,7 +37,7 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
         data:closeData[3]
     }
     let GSPCLine={
-        label:"GSPC",
+        label:"^GSPC",
         backgroundColor:"purple",
         borderColor:"purple",
         data:closeData[4]
@@ -46,15 +49,30 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
         data:closeData[5]
     }
     
+    let linesArray = [AAPLLine, AMZNLine, FBLine, GOOGLine, GSPCLine, NFLXLine]
     
-    let linesArray =[AAPLLine, AMZNLine, FBLine, GOOGLine, GSPCLine, NFLXLine]
-
     let data={
         labels:dates,
-        datasets:linesArray
+        datasets:lineShown ? [lineShown, GSPCLine] : linesArray
     }
+
+    const filterLines = (line) => {!lineShown? setLineShown(line) : setLineShown("")}
+
+
     return(
-        <Line data={data}/>
+        <div>
+            <button onClick={()=>setShowComparison(!showComparison)}>Comparison</button>
+            {showComparison?
+            <div>
+                <button onClick={()=>filterLines(AAPLLine)}>AAPL</button>
+                <button onClick={()=>filterLines(AMZNLine)}>AMZN</button>
+                <button onClick={()=>filterLines(FBLine)}>FB</button>
+                <button onClick={()=>filterLines(GOOGLine)}>GOOG</button>
+                <button onClick={()=>filterLines(NFLXLine)}>NFLX</button>
+            </div>
+            :null}
+            <Line data={data}/>
+        </div>
     )
 }
 export default Graph
