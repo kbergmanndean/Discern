@@ -21,9 +21,33 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
         borderColor:"yellow",
         data:closeData[1]
     }
+    let FBLine={
+        label:"FB",
+        backgroundColor:"green",
+        borderColor:"green",
+        data:closeData[2]
+    }
+    let GOOGLine={
+        label:"GOOG",
+        backgroundColor:"blue",
+        borderColor:"blue",
+        data:closeData[3]
+    }
+    let GSPCLine={
+        label:"GSPC",
+        backgroundColor:"purple",
+        borderColor:"purple",
+        data:closeData[4]
+    }
+    let NFLXLine={
+        label:"NFLX",
+        backgroundColor:"orange",
+        borderColor:"orange",
+        data:closeData[5]
+    }
     
     
-    let linesArray =[AAPLLine,AMZNLine]
+    let linesArray =[AAPLLine, AMZNLine, FBLine, GOOGLine, GSPCLine, NFLXLine]
 
     let data={
         labels:dates,
