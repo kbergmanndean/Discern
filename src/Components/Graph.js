@@ -4,7 +4,7 @@ import { useState } from "react"
 
 function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
     const [showComparison, setShowComparison] = useState(false)
-    const [lineShown, setLineShown] = useState("")
+    const [lineFiltered, setLineFiltered] = useState([])
 
     let dates=AAPLData.map(obj=>{return(obj["Date"])})
 
@@ -53,11 +53,10 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
     
     let data={
         labels:dates,
-        datasets:lineShown ? [lineShown, GSPCLine] : linesArray
+        datasets:lineFiltered.length!=0 ? [lineFiltered, GSPCLine] : linesArray
     }
 
-    const filterLines = (line) => {!lineShown? setLineShown(line) : setLineShown("")}
-
+    const filterLines = (line) => {lineFiltered.label != line.label ? setLineFiltered(line) : setLineFiltered([])}
 
     return(
         <div>
