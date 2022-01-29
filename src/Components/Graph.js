@@ -1,27 +1,25 @@
 import { DatasetController } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
-function Graph({AAPLData, AMZNData}) {
+function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
 
     let dates=AAPLData.map(obj=>{return(obj["Date"])})
 
-    function closeData(obj) {
-        return obj["Close"]
-    }
+    let allData=[AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData]
 
-    let AAPLCloses=AAPLData.map(closeData)
-    let AMZNCloses=AMZNData.map(closeData)
+    let closeData=allData.map((data)=>{return data.map((obj)=>{return obj["Close"]})})
+
     let AAPLLine={
         label:"AAPL", 
         backgroundColor:"red", 
         borderColor:"red", 
-        data:AAPLCloses
+        data:closeData[0]
     }
     let AMZNLine={
         label:"AMZN",
         backgroundColor:"yellow",
         borderColor:"yellow",
-        data:AMZNCloses
+        data:closeData[1]
     }
     
     
