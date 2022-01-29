@@ -37,7 +37,7 @@ function App() {
         setGOOGData(array[3])
         setGSPCData(array[4])
         setNFLXData(array[5])
-        console.log(AAPLData)
+        console.log(array[0])
       }))
   },[])
 
