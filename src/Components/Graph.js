@@ -49,8 +49,8 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
     }
     let NFLXLine={
         label:"NFLX",
-        backgroundColor:"#6a4c93",
-        borderColor:"#6a4c93",
+        backgroundColor:"#9370db",
+        borderColor:"#9370db",
         pointRadius:"0",
         data:closeData[5]
     }
@@ -70,7 +70,6 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
             },
             title:{
                 display:true
-                // text:"Stock Prices & S&P 500 Index Value"
             }
         }
     }

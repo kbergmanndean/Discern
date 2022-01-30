@@ -11,6 +11,9 @@
   padding-top:10pt;
   padding-bottom:5pt;
 }
+h1 {
+  font-size:20pt;
+}
 #graph-container {
   display:flex;
   justify-content:center;
@@ -23,6 +26,7 @@ button {
   padding:5pt;
   background-color:#233e63;
   color:white;
+  font-size:12pt;
 }
 button:hover {
   color:#fed600;
