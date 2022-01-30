@@ -16,42 +16,42 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
         label:"AAPL", 
         backgroundColor:"#ff595e", 
         borderColor:"#ff595e",
-        pointRadius:"2",
+        pointRadius:"0",
         data:closeData[0]
     }
     let AMZNLine={
         label:"AMZN",
         backgroundColor:"#ffca3a",
         borderColor:"#ffca3a",
-        pointRadius:"2",
+        pointRadius:"0",
         data:closeData[1]
     }
     let FBLine={
         label:"FB",
         backgroundColor:"#8ac926",
         borderColor:"#8ac926",
-        pointRadius:"2",
+        pointRadius:"0",
         data:closeData[2]
     }
     let GOOGLine={
         label:"GOOG",
         backgroundColor:"#1982c4",
         borderColor:"#1982c4",
-        pointRadius:"2",
+        pointRadius:"0",
         data:closeData[3]
     }
     let GSPCLine={
         label:"^GSPC",
         backgroundColor:"black",
         borderColor:"black",
-        pointRadius:"2",
+        pointRadius:"0",
         data:closeData[4]
     }
     let NFLXLine={
         label:"NFLX",
         backgroundColor:"#6a4c93",
         borderColor:"#6a4c93",
-        pointRadius:"2",
+        pointRadius:"0",
         data:closeData[5]
     }
     
@@ -82,10 +82,10 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
             <div id="head">
                 <h1>Stock Prices and S&P 500 Index Value</h1>
             </div>
-            <div id="sidebar" className={`${showComparison?"show-buttons":"hide-buttons"}`}>
+            <div id="sidebar">
                 <button id="compare" onClick={()=>setShowComparison(!showComparison)}>Comparison</button>
                 {showComparison ?
-                <div id="filters">
+                <div>
                     <button onClick={()=>filterLines(AAPLLine)}>AAPL</button>
                     <button onClick={()=>filterLines(AMZNLine)}>AMZN</button>
                     <button onClick={()=>filterLines(FBLine)}>FB</button>
