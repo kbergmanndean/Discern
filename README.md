@@ -43,3 +43,5 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 I used axios for fetch calls.
 
 I used react-chartjs-2.js along with chartjs to create the graph.
+
+I used Papa Parse to transform csv data.

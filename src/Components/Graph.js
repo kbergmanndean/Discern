@@ -1,4 +1,3 @@
-import { DatasetController } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useState } from "react"
 
@@ -6,12 +5,15 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
     const [showComparison, setShowComparison] = useState(false)
     const [lineFiltered, setLineFiltered] = useState([])
 
+    //get dates for graph labels
     let dates=AAPLData.map(obj=>{return(obj["Date"])})
 
     let allData=[AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData]
 
+    //get close data for each stock
     let closeData=allData.map((data)=>{return data.map((obj)=>{return obj["Close"]})})
 
+    //settings for each line on graph
     let AAPLLine={
         label:"AAPL", 
         backgroundColor:"#ff595e", 
@@ -57,6 +59,7 @@ function Graph({AAPLData, AMZNData, FBData, GOOGData, GSPCData, NFLXData}) {
     
     let linesArray = [AAPLLine, AMZNLine, FBLine, GOOGLine, GSPCLine, NFLXLine]
     
+    //settings for filter-->defines whether all lines are shown or just filtered line with ^GSPC
     let data={
         labels:dates,
         datasets:lineFiltered.length!=0 ? [lineFiltered, GSPCLine] : linesArray

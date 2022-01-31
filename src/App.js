@@ -13,13 +13,14 @@ function App() {
   const [GSPCData, setGSPCData] = useState([])
   const [NFLXData, setNFLXData] = useState([])
 
-
+  //function to turn csv data into objects and arrays
   function processData(response) {
     let preData=response.data
     let parsedData=Papa.parse(preData, {header:true, delimiter:","})
     return parsedData.data
   }
 
+  //fetch data for graph
   useEffect(async() => {
     const result = await axios.all([
       axios.get("/data/AAPL.csv"),
